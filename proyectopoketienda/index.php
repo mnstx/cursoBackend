@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poke Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-light">
@@ -26,85 +27,100 @@
           <li><a class="dropdown-item" href="listar/listarhabilidades.php">Habilidades</a></li>
         </ul>
       </li>
-      <a class="navbar-brand" href="admin.php">Administrar</a>
+      <a class="navbar-brand" href="login/login.php">Login</a>
     </ul>
   </div>
 </div>
 </nav>
 
-<h1>Pokemons en stock:</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>POKEMON</th>
-        <th>TIPO</th>
-        <th>IMAGEN</th>
-        <th>PRECIO</th>
-    </tr>
+  <h1>Pokemons en stock:</h1>
+  <div class="productos">
+
     <?php
     $conexion = mysqli_connect("127.0.0.1", "root", "");
     mysqli_select_db($conexion, "pokestore");
     $consulta='SELECT * FROM pokemon';
     $datos= mysqli_query($conexion, $consulta);
     while ($reg=mysqli_fetch_array($datos)) { ?>
-        <tr>
-        <td><?php echo $reg['id']; ?></td>
-        <td><?php echo $reg['nombre']; ?></td>
-        <td><?php echo $reg['tipo']; ?></td>
-        <td><img src="data:image/png;base64, <?php echo base64_encode($reg['sprite'])?>" alt="" width="50px" height="50px"></td>
-        <td><?php echo $reg['precio']; ?></td>
-        </tr>
+
+      <div class="card" style="width: 12rem;">
+        <img src="data:image/png;base64, <?php echo base64_encode($reg['sprite'])?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><?php echo $reg['nombre']; ?></h5>
+          <p class="card-text" hidden><?php echo $reg['id']; ?></p>
+          <p class="card-text"><?php echo $reg['tipo']; ?></p>
+          <p class="card-text">$<?php echo $reg['precio']; ?></p>
+          <a href="detalle/detalleproducto.php?id=<?php echo $reg['id'];?>" class="btn btn-primary">Detalles</a>
+          <br>
+          <p>Pagar con:</p>
+          <a href="https://mpago.la/25W9n3y" target="_blank" class="btn btn-primary">MercadoPago</a>
+          <a href="https://spectrocoin.com/en/integration/buttons/50307-qWMwXmE1ix.html" target="_blank" class="btn btn-primary">Bitcoin</a>
+        </div>
+      </div>
+
     <?php } ?>
-    </table>
+  </div>
+
 
     <h1>Objetos en stock:</h1>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>GENERACION</th>
-            <th>IMAGEN</th>
-            <th>PRECIO</th>
-        </tr>
+<div class="productos">
+
         <?php
         $conexion = mysqli_connect("127.0.0.1", "root", "");
         mysqli_select_db($conexion, "pokestore");
         $consulta='SELECT * FROM items';
         $datos= mysqli_query($conexion, $consulta);
         while ($reg=mysqli_fetch_array($datos)) { ?>
-            <tr>
-            <td><?php echo $reg['id']; ?></td>
-            <td><?php echo $reg['nombre']; ?></td>
-            <td><?php echo $reg['generacion']; ?></td>
-            <td><img src="data:image/png;base64, <?php echo base64_encode($reg['sprite'])?>" alt="" width="50px" height="50px"></td>
-            <td><?php echo $reg['precio']; ?></td>
 
-            </tr>
+          <div class="card" style="width: 12rem;">
+            <img src="data:image/png;base64, <?php echo base64_encode($reg['sprite'])?>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $reg['nombre']; ?></h5>
+              <p class="card-text" hidden><?php echo $reg['id']; ?></p>
+              <p class="card-text"><?php echo $reg['generacion']; ?></p>
+              <p class="card-text">$<?php echo $reg['precio']; ?></p>
+              <a href="detalle/detalleproductoit.php?id=<?php echo $reg['id'];?>" class="btn btn-primary">Detalles</a>
+              <br>
+              <p>Pagar con:</p>
+              <a href="https://mpago.la/25W9n3y" target="_blank" class="btn btn-primary">MercadoPago</a>
+              <a href="https://spectrocoin.com/en/integration/buttons/50307-qWMwXmE1ix.html" target="_blank" class="btn btn-primary">Bitcoin</a>
+
+            </div>
+          </div>
+
         <?php } ?>
-        </table>
+
+      </div>
+
 
         <h1>Habilidades en stock:</h1>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>NOMBRE</th>
-                <th>INFO</th>
-                <th>PRECIO</th>
-            </tr>
+        <div class="productos">
+
             <?php
             $conexion = mysqli_connect("127.0.0.1", "root", "");
             mysqli_select_db($conexion, "pokestore");
             $consulta='SELECT * FROM habilidades';
             $datos= mysqli_query($conexion, $consulta);
             while ($reg=mysqli_fetch_array($datos)) { ?>
-                <tr>
-                <td><?php echo $reg['id']; ?></td>
-                <td><?php echo $reg['nombre']; ?></td>
-                <td><?php echo $reg['info']; ?></td>
-                <td><?php echo $reg['precio']; ?></td>
-                </tr>
+
+              <div class="card" style="width: 12rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $reg['nombre']; ?></h5>
+                  <p class="card-text" hidden><?php echo $reg['id']; ?></p>
+                  <p class="card-text"><?php echo $reg['info']; ?></p>
+                  <p class="card-text">$<?php echo $reg['precio']; ?></p>
+                  <a href="detalle/detalleproductoob.php?id=<?php echo $reg['id'];?>" class="btn btn-primary">Detalles</a>
+                  <br>
+                  <p>Pagar con:</p>
+                  <a href="https://mpago.la/25W9n3y" target="_blank" class="btn btn-primary">MercadoPago</a>
+                  <a href="https://spectrocoin.com/en/integration/buttons/50307-qWMwXmE1ix.html" target="_blank" class="btn btn-primary">Bitcoin</a>
+
+
+                </div>
+              </div>
+
             <?php } ?>
-            </table>
+          </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

@@ -10,26 +10,10 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-light">
 <div class="container-fluid">
-  <a class="navbar-brand" href="index.php">PokeStore</a>
+  <a class="navbar-brand" href="../admin.php">Administrador</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Filtrar
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="listar/listarpokemons.php">Pokemons</a></li>
-          <li><a class="dropdown-item" href="listar/listarobjetos.php">Objetos</a></li>
-          <li><a class="dropdown-item" href="listar/listarhabilidades.php">Habilidades</a></li>
-        </ul>
-      </li>
-        <a class="navbar-brand" href="index.php">Administrar</a>
-      </li>
-    </ul>
-  </div>
 </div>
 </nav>
 <h1>Ingrese los datos del Pokemon:</h1>
