@@ -18,29 +18,44 @@
 </nav>
 <h1>Ingrese los datos de la Habilidad:</h1>
 
-    <form method="POST" action="createhabilidades.php" enctype="multipart/form-data">
-        <label>Nombre</label>
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <label>Info</label>
-        <input type="text" name="info" placeholder="Informacion sobre la habilidad" required>
-        <label>Precio</label>
-        <input type="text" name="precio" placeholder="Precio" required>
-        <input type="submit" name="submit" value="Ingresar">
+<form method="POST" action="createhabilidades.php" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="text" name="nombre" placeholder="" class="form-control" id="exampleInputEmail1" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Info</label>
+        <input type="textarea" name="info" placeholder="" class="form-control" id="exampleInputEmail1" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Precio</label>
+        <input type="text" name="precio" placeholder="" class="form-control" id="exampleInputEmail1" required>
+    </div>
+    
+        <input type="submit" name="submit" value="Ingresar" class="btn btn-primary">
+        <a href="../admin.php" class="btn btn-primary">Cancelar</a>
     </form>
     <?php
-      $conexion = mysqli_connect("127.0.0.1", "root", "");
-      mysqli_select_db($conexion, "pokestore");
+    
+      $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+      mysqli_select_db($conexion, "eshos_33000341_pokestore");
 
       $nombre = $_POST ['nombre'];
       $info = $_POST['info'];
       $precio = $_POST['precio'];
+      
+      if(array_key_exists('submit',$_POST)){
+            $nombre=$_POST['nombre'];
+            $tipo=$_POST['info'];
+            $precio=$_POST['precio'];
+            $sprite=addslashes(file_get_contents($_FILES['img']['tmp_name']));
 
-      $consulta = "INSERT INTO habilidades(id,nombre,info,precio) VALUES(NULL,'$nombre','$info','$precio')";
-      mysqli_query($conexion,$consulta);
+            $consulta = "INSERT INTO habilidades(id,nombre,info,precio) VALUES(NULL,'$nombre','$info','$precio')";
+            mysqli_query($conexion,$consulta);
 
-       header('location: ../admin.php');
+            header('location: ../admin.php');
 
-    ?>
+        }?>
 
 </body>
 </html>

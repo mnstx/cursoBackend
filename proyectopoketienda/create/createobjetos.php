@@ -19,31 +19,47 @@
 <h1>Ingrese los datos del Objeto:</h1>
 
     <form method="POST" action="createobjetos.php" enctype="multipart/form-data">
-        <label>Nombre</label>
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <label>Generacion</label>
-        <input type="text" name="generacion" placeholder="Generacion" required>
-        <label>Precio</label>
-        <input type="text" name="precio" placeholder="Precio" required>
-        <label>Imagen</label>
-        <input type="file" name="img" placeholder="imagen">
-        <input type="submit" name="submit" value="Ingresar">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="text" name="nombre" placeholder="" class="form-control" id="exampleInputEmail1" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Generacion</label>
+        <input type="text" name="generacion" placeholder="" class="form-control" id="exampleInputEmail1" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Precio</label>
+        <input type="text" name="precio" placeholder="" class="form-control" id="exampleInputEmail1" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Imagen</label>
+        <input type="file" name="img" placeholder="" class="form-control" id="exampleInputEmail1">
+    </div>
+    
+        <input type="submit" name="submit" value="Ingresar" class="btn btn-primary">
+        <a href="../admin.php" class="btn btn-primary">Cancelar</a>
     </form>
-    <?php
-      $conexion = mysqli_connect("127.0.0.1", "root", "");
-      mysqli_select_db($conexion, "pokestore");
+<?php
+
+      $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+      mysqli_select_db($conexion, "eshos_33000341_pokestore");
 
       $nombre = $_POST ['nombre'];
       $generacion = $_POST['generacion'];
       $precio = $_POST['precio'];
       $sprite = addslashes(file_get_contents($_FILES['img']['tmp_name']));
 
+      if(array_key_exists('submit',$_POST)){
+        $nombre=$_POST['nombre'];
+        $tipo=$_POST['generacion'];
+        $precio=$_POST['precio'];
+        $sprite=addslashes(file_get_contents($_FILES['img']['tmp_name']));
+
       $consulta = "INSERT INTO items(id,nombre,generacion,sprite,precio) VALUES(NULL,'$nombre','$generacion','$sprite','$precio')";
       mysqli_query($conexion,$consulta);
 
-       header('location: ../admin.php');
-
-    ?>
-
+      header('location: ../admin.php');
+      }
+?>
 </body>
 </html>

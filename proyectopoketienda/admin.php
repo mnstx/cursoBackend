@@ -21,6 +21,7 @@ session_start();
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <a class="navbar-brand" href="#"><?php echo $_SESSION ['usuario'];?></a>
         <a class="navbar-brand" href="login/logout.php">Salir</a>
       </li>
     </ul>
@@ -34,8 +35,8 @@ session_start();
 <div class="productos">
 
   <?php
-  $conexion = mysqli_connect("127.0.0.1", "root", "");
-  mysqli_select_db($conexion, "pokestore");
+  $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+  mysqli_select_db($conexion, "eshos_33000341_pokestore");
   $consulta='SELECT * FROM pokemon';
   $datos= mysqli_query($conexion, $consulta);
   while ($reg=mysqli_fetch_array($datos)) { ?>
@@ -62,8 +63,8 @@ session_start();
     <div class="productos">
 
       <?php
-      $conexion = mysqli_connect("127.0.0.1", "root", "");
-      mysqli_select_db($conexion, "pokestore");
+      $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+      mysqli_select_db($conexion, "eshos_33000341_pokestore");
       $consulta='SELECT * FROM items';
       $datos= mysqli_query($conexion, $consulta);
       while ($reg=mysqli_fetch_array($datos)) { ?>
@@ -90,14 +91,13 @@ session_start();
         <div class="productos">
 
           <?php
-          $conexion = mysqli_connect("127.0.0.1", "root", "");
-          mysqli_select_db($conexion, "pokestore");
+          $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+          mysqli_select_db($conexion, "eshos_33000341_pokestore");
           $consulta='SELECT * FROM habilidades';
           $datos= mysqli_query($conexion, $consulta);
           while ($reg=mysqli_fetch_array($datos)) { ?>
 
             <div class="card" style="width: 12rem;">
-              <img src="data:image/png;base64, <?php echo base64_encode($reg['sprite'])?>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><?php echo $reg['nombre']; ?></h5>
                 <p class="card-text" hidden><?php echo $reg['id']; ?></p>

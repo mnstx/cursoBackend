@@ -36,8 +36,8 @@
 <div class="productos">
 
     <?php
-    $conexion = mysqli_connect("127.0.0.1", "root", "");
-    mysqli_select_db($conexion, "pokestore");
+    $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+    mysqli_select_db($conexion, "eshos_33000341_pokestore");
     $consulta='SELECT * FROM habilidades';
     $datos= mysqli_query($conexion, $consulta);
     while ($reg=mysqli_fetch_array($datos)) { ?>
@@ -48,7 +48,7 @@
           <p class="card-text" hidden><?php echo $reg['id']; ?></p>
           <p class="card-text"><?php echo $reg['info']; ?></p>
           <p class="card-text">$<?php echo $reg['precio']; ?></p>
-          <a href="../detalle/detalleproducto.php?id=<?php echo $reg['id'];?>" class="btn btn-primary">Detalles</a>
+          <a href="../detalle/detalleproductoob.php?id=<?php echo $reg['id'];?>" class="btn btn-primary">Detalles</a>
           <br>
           <p>Pagar con:</p>
           <a href="https://mpago.la/25W9n3y" target="_blank" class="btn btn-primary">MercadoPago</a>

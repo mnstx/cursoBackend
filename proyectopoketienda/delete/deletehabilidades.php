@@ -1,6 +1,6 @@
 <?php
-  $conexion = mysqli_connect("127.0.0.1", "root", "");
-  mysqli_select_db($conexion, "pokestore");
+  $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+  mysqli_select_db($conexion, "eshos_33000341_pokestore");
   $id = $_GET['id'];
   $consulta = "DELETE FROM `habilidades` WHERE `id`=$id";
   mysqli_query($conexion,$consulta);

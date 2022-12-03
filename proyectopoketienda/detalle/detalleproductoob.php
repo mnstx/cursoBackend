@@ -21,8 +21,8 @@
 <div class="productos">
 
   <?php
-  $conexion = mysqli_connect("127.0.0.1", "root", "");
-  mysqli_select_db($conexion, "pokestore");
+  $conexion = mysqli_connect("sql101.eshost.com.ar", "eshos_33000341", "manu1992");
+  mysqli_select_db($conexion, "eshos_33000341_pokestore");
   $id = $_GET['id'];
   $consulta="SELECT * FROM habilidades WHERE id=$id";
   $datos= mysqli_query($conexion, $consulta);
@@ -35,9 +35,10 @@
         <p class="card-text"><?php echo $reg['info']; ?></p>
         <p class="card-text">$<?php echo $reg['precio']; ?></p>
         <br>
-        <p>Pagar con:</p>
-        <a href="#" class="btn btn-primary">MercadoPago</a>
-        <a href="https://spectrocoin.com/en/integration/buttons/50307-qWMwXmE1ix.html" class="btn btn-primary">Bitcoin</a>
+        <br>
+              <p>Pagar con:</p>
+              <a href="https://mpago.la/25W9n3y" target="_blank" class="btn btn-primary">MercadoPago</a>
+              <a href="https://spectrocoin.com/en/integration/buttons/50307-qWMwXmE1ix.html" target="_blank" class="btn btn-primary">Bitcoin</a>
       </div>
     </div>
 
